@@ -30,6 +30,38 @@ class AuthenticationTest extends TestCase
         $response->assertRedirect(route('dashboard', absolute: false));
     }
 
+    public function test_registration_assigns_default_student_role_and_reputation(): void
+    {
+        $response = $this->post('/register', [
+            'name' => 'Example User',
+            'email' => 'student@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $response->assertRedirect(route('dashboard', absolute: false));
+
+        $user = User::where('email', 'student@example.com')->firstOrFail();
+
+        $this->assertEquals(User::ROLE_STUDENT, $user->role);
+        $this->assertSame(0, $user->reputation);
+        $this->assertAuthenticatedAs($user);
+    }
+
+    public function test_user_profile_page_shows_role_and_reputation(): void
+    {
+        $user = User::factory()->create([
+            'role' => User::ROLE_MODERATOR,
+            'reputation' => 42,
+        ]);
+
+        $response = $this->actingAs($user)->get(route('users.show', $user));
+
+        $response->assertStatus(200);
+        $response->assertSee('Modérateur');
+        $response->assertSee('42');
+    }
+
     public function test_users_can_not_authenticate_with_invalid_password(): void
     {
         $user = User::factory()->create();
