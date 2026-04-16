@@ -1,59 +1,57 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+﻿# AskCampus
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Application web Laravel développée pour un projet d'équipe de 4 développeurs.
 
-## About Laravel
+## Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+AskCampus est une application Laravel qui propose une authentification utilisateur, un tableau de bord sécurisé et une gestion de profil. Le projet utilise Laravel, PHP, Tailwind CSS et Vite.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Fonctionnalités principales
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Authentification et enregistrement des utilisateurs
+- Tableau de bord sécurisé accessible uniquement aux utilisateurs connectés
+- Gestion du profil utilisateur (édition, mise à jour et suppression)
+- Affichage du rôle, de la réputation et du nombre de questions de l'utilisateur
+- Front-end stylé avec Tailwind CSS et Vite
 
-## Learning Laravel
+## Ma contribution
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Ma partie a consisté à :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- gérer l’inscription et la connexion des utilisateurs
+- attribuer automatiquement le rôle “étudiant” et une réputation initiale
+- afficher et modifier le profil utilisateur (infos, réputation, activités)
+- gérer l’accès aux fonctionnalités selon le rôle (étudiant / modérateur)
+- implémenter la route `/dashboard` et l'accès protégé par le middleware `auth`
+- développer l'interface de tableau de bord dans `resources/views/dashboard.blade.php`
+- ajouter la gestion du profil utilisateur via `ProfileController`
+- assurer la cohérence des pages d'authentification et du workflow utilisateur
 
-## Laravel Sponsors
+## Équipe
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Le projet est développé par 4 personnes. Chacun travaille sur une fonctionnalité ou un module spécifique pour avancer en parallèle.
 
-### Premium Partners
+## Branches et workflow Git
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Idéalement, on travaille sur une branche de fonctionnalité (`feature/...` ou `dev/...`) et on fusionne ensuite vers `main` via une Pull Request.
+- J'ai terminé ma partie sur la branche `dev1-auth-users`.
+- Pour envoyer sur `main`, il faut généralement :
+  1. s'assurer que `main` est à jour (`git checkout main` puis `git pull`)
+  2. rebaser ou fusionner la branche de travail sur `main`
+  3. ouvrir une Merge Request / Pull Request pour révision
 
-## Contributing
+> Remarque : il est préférable de ne pas développer directement sur `main`. Travailler sur une branche dédiée permet de garder `main` stable.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Installation
 
-## Code of Conduct
+1. Copier `.env.example` en `.env`
+2. Exécuter `composer install`
+3. Exécuter `npm install`
+4. Exécuter `php artisan key:generate`
+5. Exécuter `php artisan migrate`
+6. Exécuter `npm run dev`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Notes
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Vous pouvez tester l'authentification et l'accès au tableau de bord.
+- Si vous avez déjà poussé vos modifications sur `main`, signalez-le à l'équipe et vérifiez l'historique des commits.
