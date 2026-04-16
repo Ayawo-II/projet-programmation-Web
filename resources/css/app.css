@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .diagonal-left {
+    clip-path: polygon(0 0, 64% 0, 100% 100%, 0 100%);
+  }
+
+  .diagonal-right {
+    clip-path: polygon(36% 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .neon-card {
+    box-shadow: 0 0 0 1px rgba(56,189,248,0.3), 0 0 80px rgba(56,189,248,0.18);
+  }
+}
+
+@layer utilities {
+  .animate-tilt {
+    animation: tilt 12s linear infinite;
+  }
+
+  @keyframes tilt {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(2deg) scale(1.02);
+    }
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }
+}
